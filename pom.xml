@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.opendaylight.odlparent</groupId>
+    <artifactId>odlparent</artifactId>
+    <version>1.5.5-SNAPSHOT</version>
+    <relativePath/>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.opendaylight.integration</groupId>
+  <artifactId>root</artifactId>
+  <version>0.3.5-SNAPSHOT</version>
+  <name>integration</name> <!-- Used by Sonar to set project name -->
+  <packaging>pom</packaging>
+  <url>https://wiki.opendaylight.org/view/CrossProject:Integration_Group</url>
+  <scm>
+    <connection>scm:git:ssh://git.opendaylight.org:29418/integration.git</connection>
+    <developerConnection>scm:git:ssh://git.opendaylight.org:29418/integration.git</developerConnection>
+    <url>https://wiki.opendaylight.org/view/CrossProject:Integration_Group</url>
+    <tag>HEAD</tag>
+  </scm>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Keep this list sorted alphabetically please -->
+    <feature.controller.extras.version>1.5.5-SNAPSHOT</feature.controller.extras.version>
+    <feature.mdsal.version>1.2.5-SNAPSHOT</feature.mdsal.version>
+    <feature.odlparent.version>1.5.5-SNAPSHOT</feature.odlparent.version>
+    <feature.yangtools.version>0.7.5-SNAPSHOT</feature.yangtools.version>
+    <junit.version>4.8.1</junit.version>
+    <karaf.branding.version>1.1.5-SNAPSHOT</karaf.branding.version>
+    <openecomp.filter.feature.version>1.1.2-SNAPSHOT</openecomp.filter.feature.version>
+    <openecomp.sli.feature.version>1.1.2-SNAPSHOT</openecomp.sli.feature.version>
+    <openecomp.dblib.feature.version>1.1.2-SNAPSHOT</openecomp.dblib.feature.version>
+    <openecomp.sliapi.feature.version>1.1.2-SNAPSHOT</openecomp.sliapi.feature.version>
+    <openecomp.sliPluginUtils.feature.version>1.1.2-SNAPSHOT</openecomp.sliPluginUtils.feature.version>
+    <!-- Keep this list sorted alphabetically please -->
+  </properties>
+  <modules>
+    <module>distributions/</module>
+    <module>features/</module>
+  </modules>
+
+  <distributionManagement>
+    <!-- OpenDayLight Released artifact -->
+    <repository>
+      <id>opendaylight-release</id>
+      <url>${nexusproxy}/repositories/opendaylight.release/</url>
+    </repository>
+    <!-- OpenDayLight Snapshot artifact -->
+    <snapshotRepository>
+      <id>opendaylight-snapshot</id>
+      <url>${nexusproxy}/repositories/opendaylight.snapshot/</url>
+    </snapshotRepository>
+    <site>
+      <id>${project.artifactId}-site</id>
+      <url>./</url>
+    </site>
+  </distributionManagement>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven.surefire.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>${enforcer.version}</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>3.1.1</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

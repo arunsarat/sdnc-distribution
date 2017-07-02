@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="odl-integration-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <!--
+        Concept:
+            This file is a registry of feature repos defined in the projects.
+
+            The intent is to provide a single usable index that will pull in all available features in ODL.
+
+            No features should be defined here, only <repositories> should be listed.
+
+        Directions:
+            1) Make sure your feature file is running the tests and passing them in master:
+                https://wiki.opendaylight.org/view/Karaf:Hands_On_Guide#Existing_Feature_Files
+            2) Add your <repository> below
+            3) Go to the ../pom.xml and
+                a)  Add a dependendy for your feature
+                b)  DO NOT ADD ANYTHING TO THE BOOTFEATURES.
+    -->
+
+
+    <!-- Please add new repository in an alphabetical order -->
+    <repository>mvn:org.opendaylight.controller/features-base/${feature.odlparent.version}/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-extras/${feature.controller.extras.version}/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-mdsal/${feature.mdsal.version}/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-netconf-connector/${feature.mdsal.version}/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/${feature.mdsal.version}/xml/features</repository>
+    <repository>mvn:org.openecomp.sdnc.core/filters-features/${openecomp.filter.feature.version}/xml/features</repository>
+    <repository>mvn:org.openecomp.sdnc.core/dblib-features/${openecomp.dblib.feature.version}/xml/features</repository>
+    <repository>mvn:org.openecomp.sdnc.core/sli-features/${openecomp.sli.feature.version}/xml/features</repository>
+    <repository>mvn:org.openecomp.sdnc.core/sliPluginUtils-features/${openecomp.sliPluginUtils.feature.version}/xml/features</repository>
+    <repository>mvn:org.openecomp.sdnc.core/sliapi-features/${openecomp.sliapi.feature.version}/xml/features</repository>
+    <!--<feature>org.openecomp.core.filters.features:sdnc-dblib:xml:${openecomp.filter.feature.version}</feature> 
+    <feature version="${openecomp.filter.feature.version}">sdnc-filters</feature> 
+    <feature version="${openecomp.sli.feature.version}">sdnc-sli</feature> 
+    <feature version="${openecomp.sliapi.feature.version}">sdnc-sliapi</feature> 
+    <feature version="${openecomp.sliPluginUtils.feature.version}">sdnc-sliPluginUtils</feature>  -->
+</features>
